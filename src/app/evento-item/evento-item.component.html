@@ -1,0 +1,30 @@
+<div class="card h-100 raise">
+  <a [routerLink]="['/eventos', evento.id]">
+  <img
+    [src]="evento.image"
+    class="img-fluid card-image-top"
+    alt="Responsive image"
+  />
+</a>
+  <div class="card-body d-flex flex-column justify-content-around">
+    <a [routerLink]="['/eventos', evento.id]">
+      <h4
+      class="card-title"
+      [innerText]="evento.title | titlecase"
+     
+    ></h4>
+    </a>
+    <p class="card-text  text-start" [innerText]="evento.description"></p>
+    <br>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-lg btn-success ml-3 justify-item-end raise" (click)="editaEvento()">Editar</button>
+      <button class="btn btn-lg btn-danger ml-3 raise" (click)="deleteEvento()">Eliminar</button>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    {{ evento.date | date : "dd/MM/y" }}
+    <span class="float-right">
+      {{ evento.price | currency : "EUR" : "symbol" }}
+    </span>
+  </div>
+</div>

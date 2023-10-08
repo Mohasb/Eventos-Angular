@@ -1,0 +1,96 @@
+<!--Formulario introducción de eventos-->
+<!--(ngSubmit) es el submit de angular; al hacer click en el botón submit se llama a la función addEvento-->
+<!--[(ngModel)] es para hacer una vinculación bidireccional del value del input y su propiedad en un objeto llamado newEvento del .ts-->
+<div class="container">
+  <form class="mt-4" [formGroup]="eventForm" (ngSubmit)="addEvento()">
+    <h1 class="w-100 text-center"><strong>Editar Evento</strong></h1>
+    <mat-form-field class="input-title">
+      <mat-label>Titulo</mat-label>
+      <input name="title" id="title" formControlName="title" matInput />
+      <mat-error *ngIf="title?.hasError('required')">
+        El título es <strong>obligatorio</strong>
+      </mat-error>
+      <mat-error *ngIf="title?.hasError('minlength')">
+        El título debe ser de <strong>2 caracteres</strong> como mínimo
+      </mat-error>
+      <mat-error *ngIf="title?.hasError('pattern')">
+        Hay caracteres inválidos en el título
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha</mat-label>
+      <input
+        id="fecha"
+        name="fecha"
+        formControlName="fecha"
+        matInput
+        [matDatepicker]="picker"
+        placeholder="dd/mm/yyyy"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="fecha?.hasError('required')">
+        La fecha es <strong>obligatoria</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Descripción</mat-label>
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        formControlName="descripcion"
+        matInput
+      ></textarea>
+      <mat-error *ngIf="descripcion?.hasError('required')">
+        La descripcion es <strong>obligatoria</strong>
+      </mat-error>
+      <mat-error *ngIf="descripcion?.hasError('minlength')">
+        La descripcion debe ser de <strong> 5 caracteres</strong> como mínimo
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input-precio">
+      <mat-label>Precio</mat-label>
+      <input name="precio" id="precio" formControlName="precio" matInput />
+      <mat-error *ngIf="precio?.hasError('required')">
+        El precio es <strong>obligatorio</strong>
+      </mat-error>
+      <mat-error *ngIf="precio?.hasError('min')">
+        El precio minimo es 0
+      </mat-error>
+      <mat-error *ngIf="precio?.hasError('pattern')">
+        El precio deben ser numeros
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="input-imagen">
+      <mat-label>Imagen</mat-label>
+      <input name="precio" hidden id="precio" matInput />
+      <input
+        type="file"
+        class="form-control mt-4"
+        id="input-imagen"
+        name="input-imagen"
+        accept="image/png, image/jpeg"
+        #fileImage
+        (change)="convertBase64(fileImage)"
+      />
+    </mat-form-field>
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-10 col-xl-8">
+        <figure class="w-100">
+          <img class="imagen w-100" id="imagen" src="" />
+        </figure>
+      </div>
+    </div>
+    <button type="submit" mat-raised-button color="primary" id="anyadir">
+      Editar
+    </button>
+  </form>
+</div>

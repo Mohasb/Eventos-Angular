@@ -1,0 +1,20 @@
+.navbar-custom {
+  background-color: #673ab7;
+}
+.navbar-custom a {
+  color: white;
+  font-size: 1.5rem;
+}
+.navbar-custom .active {
+  border-style: outset;
+  border-width: 4px;
+}
+
+hr {
+  color: white;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}/*# sourceMappingURL=navbar.component.css.map */

@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col col-md-6">
+      <!-- [evento]='evento' ***envía el evento del guard resolve
+    (eventoEliminar)="goBack()"  *** eventoEliminar ya se encarga de pedir al servicio que elimine el evento asi que goback() solo vuelve a /eventos-->
+      <evento-item
+        class="card mt-4"
+        [evento]="evento"
+        (eventoEliminar)="goBack()"
+      ></evento-item>
+      <button
+        type="button"
+        class="btn raise btn-lg btn-success mx-auto d-block mt-4 volver"
+        (click)="goBack()"
+      >
+        Volver
+      </button>
+    </div>
+  </div>
+</div>

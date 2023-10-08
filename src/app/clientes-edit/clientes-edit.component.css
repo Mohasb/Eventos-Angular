@@ -1,0 +1,17 @@
+mat-form-field {
+  width: 100%;
+}
+
+#registro {
+  display: block;
+  margin: 2rem auto;
+  width: 250px;
+  height: 50px;
+  font-size: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #673ab7;
+  text-transform: uppercase;
+}/*# sourceMappingURL=clientes-edit.component.css.map */

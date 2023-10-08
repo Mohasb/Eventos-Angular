@@ -1,0 +1,45 @@
+<!--Barra superior para ordenar eventos y un input para filtrar eventos-->
+<div class="sort-search p-1 justify-content-center">
+  <!--Al desencadenarse el evento click... llama a la función ordenarPorFecha del .ts pasando los eventos(eventos es una array de tipo IEvento definido en .ts )-->
+  <a class="btn btn-link text-white" (click)="ordenaPorFecha(eventos)">Ordenar por fecha</a>
+  <!--Al desencadenarse el evento click... llama a la función ordenarPorPrecio del .ts pasando los eventos(eventos es una array de tipo IEvento definido en .ts )-->
+  <a class="btn btn-link text-white" (click)="ordenaPorPrecio(eventos)">Ordenar por precio</a>
+  <!--Este input tiene asignada una variable llamada filterSearch del .ts de forma Vinculación bidireccional [(ngModel)]-->
+  <input
+    type="text"
+    [(ngModel)]="filterSearch"
+    class="form-control ms-md-auto "
+    name="filter"
+    id="filter"
+    placeholder="Search"
+  />
+</div>
+<!--Si no hay eventos en el .ts o se han eliminado todos los eventos se muestra este aviso-->
+<div *ngIf="!eventos || !eventos.length" class="row">
+  <div class="col">
+    <figure class="d-flex justify-content-center mt-4 d-none">
+      <img src="../../assets/noEvent.png" alt="No hay eventos disponibles">
+    </figure>
+    <!-- <h2>Puedes añadir uno <a [routerLink]="['/eventos/add']" class="btn btn-link"><h2>Aquí</h2></a></h2> -->
+  </div>
+</div>
+<div class="space"></div>
+<div class="card-columns my-4 container justify-content-center">
+  <!--Si no hay eventos después de filtrarlos se muestra este aviso-->
+  <h1 class="mt-4" *ngIf="eventos.length && !(eventos | eventFilter : filterSearch).length">
+    No hay eventos disponibles con: {{ filterSearch }}
+  </h1>
+  <!-- Aquí se crearán dinámicamente tantos evento-item como haya en el array de eventos -->
+  <!-- [evento] esta pasando el evento hacia el hijo:evento-item -->
+  <!-- (eventoEliminar) recibe un evento a eliminar desde el hijo: evento-item -->
+  <div *ngIf="!loadedEvents" class="container d-flex justify-content-center">
+    <mat-spinner diameter="200"></mat-spinner>
+  </div>
+  <evento-item
+    class="card"
+    *ngFor="let evento of eventos | eventFilter : filterSearch"
+    [evento]="evento"
+    (eventoEliminar) = "eliminaEvento($event)"
+  ></evento-item> 
+</div>
+

@@ -1,0 +1,71 @@
+<nav
+  class="navbar navbar-expand-md navbar-custom d-flex justify-content-center sticky-top"
+  aria-label="Fourth navbar example"
+>
+  <div class="container-fluid">
+    <a
+      class="navbar-brand abs text-white"
+      [routerLink]="['/eventos']"
+    >
+      <img class="logo"  src="../../assets/logo.svg" alt="Icono Angular" />
+    </a>
+    <a [routerLink]="['/eventos']" class="text-decoration-none text-white fs-1 fw-bold d-md-none">ANGULAR EVENTS</a>
+    <button
+      mat-fab
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample04"
+      aria-controls="navbarsExample04"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      color="primary"
+      aria-label="Example icon button with a delete icon"
+      class="d-md-none"
+    >
+      <mat-icon>menu</mat-icon>
+      
+    </button>
+    
+ 
+    <div class="collapse navbar-collapse mt-4 mt-md-0" id="navbarsExample04">
+      <ul class="navbar-nav text-center m-md-auto">
+        <li class="nav-item mb-4 mb-md-0 fs-4 mx-md-4">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show"
+            [routerLink]="['/eventos']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [routerLinkActive]="['active']"
+            >Eventos</a
+          >
+        </li>
+        <div class="vr text-white d-none d-md-block"></div>
+        <hr />
+        <li class="nav-item mb-4 mb-md-0 fs-4 mx-md-4">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show"
+            [routerLink]="['/eventos/add']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [routerLinkActive]="['active']"
+            >Añadir evento</a
+          >
+        </li>
+        <div class="vr text-white d-none d-md-block"></div>
+        <hr />
+        <li class="nav-item mb-4 mb-md-0 fs-4 mx-md-4">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show"
+            [routerLink]="['/clientes/add']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [routerLinkActive]="['active']"
+            >Gestion de usuarios</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

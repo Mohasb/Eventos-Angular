@@ -1,0 +1,32 @@
+.sort-search {
+  display: flex;
+  flex-grow: 1;
+  background-color: #673ab7;
+  padding-left: 1rem;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+}
+.sort-search a {
+  margin-right: 2rem;
+  white-space: nowrap;
+  align-self: center;
+}
+.sort-search .form-control {
+  width: 20%;
+  border-radius: 5px;
+}
+
+.space {
+  margin: 100px;
+}
+
+.card {
+  min-width: 20rem;
+}
+
+.card-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+  gap: 1rem;
+}/*# sourceMappingURL=eventos-show.component.css.map */

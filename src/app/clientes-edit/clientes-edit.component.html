@@ -1,0 +1,81 @@
+<div class="container my-4">
+    <form [formGroup]="clientForm" (ngSubmit)="addCliente()">
+      <h1 class="w-100 text-center"><strong>Editar Cliente</strong></h1>
+      <mat-form-field class="input-nombre">
+        <mat-label>Nombre</mat-label>
+        <input name="nombre" id="nombre" formControlName="nombre" matInput />
+        <mat-error *ngIf="nombre?.hasError('required')">
+          El nombre es <strong>obligatorio</strong>
+        </mat-error>
+        <mat-error *ngIf="nombre?.hasError('minlength')">
+          El nombre debe ser de 2 caracteres como mínimo
+        </mat-error>
+        <mat-error *ngIf="nombre?.hasError('pattern')">
+          Hay caracteres inválidos en el nombre
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="input-apellido">
+        <mat-label>Apellido/s</mat-label>
+        <input
+          name="apellido"
+          id="apellido"
+          formControlName="apellidos"
+          matInput
+        />
+        <mat-error *ngIf="apellidos?.hasError('required')">
+          El apellido es <strong>obligatorio</strong>
+        </mat-error>
+        <mat-error *ngIf="apellidos?.hasError('minlength')">
+          El apellido debe ser de 2 caracteres como mínimo
+        </mat-error>
+        <mat-error *ngIf="apellidos?.hasError('pattern')">
+          Hay caracteres inválidos en el apellido
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="input-nif">
+        <mat-label>NIF</mat-label>
+        <input name="nif" id="nif" formControlName="nif" matInput />
+        <mat-error *ngIf="nif?.hasError('required')">
+          El nif es <strong>obligatorio</strong>
+        </mat-error>
+        <mat-error *ngIf="nif?.hasError('pattern')">
+          El NIF deben ser 8 números y una letra
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="input-direccion">
+        <mat-label>Dirección</mat-label>
+        <input
+          name="direccion"
+          id="direccion"
+          formControlName="direccion"
+          matInput
+        />
+        <mat-error *ngIf="direccion?.hasError('required')">
+          La dirección es <strong>obligatoria</strong>
+        </mat-error>
+        <mat-error *ngIf="direccion?.hasError('minlength')">
+          La dirección debe ser de 10 caracteres como mínimo
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Eventos disponibles</mat-label>
+        <mat-select name="eventos" id="eventos" formControlName="eventos">
+          <mat-option *ngFor="let evento of eventos" value="{{ evento.id }}">
+            {{ evento.title }}, {{ evento.date }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="direccion?.hasError('required')">
+          Elegir 1 evento es <strong>obligatorio</strong>
+        </mat-error>
+      </mat-form-field>
+
+      
+  
+      <button type="submit" id="registro" mat-raised-button color="primary">Editar</button>
+    </form>
+  </div>
+  

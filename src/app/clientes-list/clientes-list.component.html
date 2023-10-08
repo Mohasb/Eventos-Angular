@@ -1,0 +1,24 @@
+<h1 class="text-center"><strong>Listado de clientes</strong></h1>
+<div class="container">
+  <table class="table table-striped w-100 table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">NIF</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Eventos</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let cliente of clientes">
+      <tr>
+        <th scope="row"><a [routerLink]="['/cliente/edit/', cliente.id]">{{cliente.nombre}}</a></th>
+        <td>{{cliente.apellido}}</td>
+        <td>{{cliente.nif}}</td>
+        <td>{{cliente.direccion}}</td>
+        <td><a [routerLink]="['/eventos', cliente.evento]">{{cliente.eventoTitle}}</a></td>
+        <td><button class="btn btn-danger ml-3" (click)="deleteCliente(cliente)">Eliminar</button></td>
+      </tr> 
+    </tbody>
+  </table>
+</div>
